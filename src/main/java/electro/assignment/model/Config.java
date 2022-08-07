@@ -6,8 +6,8 @@ package electro.assignment.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +16,10 @@ import lombok.Setter;
  * @author afdzal
  */
 @Entity
-@Table(name = "appliances")
-public class Appliance {
-    public Appliance(){}
+@Table(name = "configs")
+@Data
+public class Config {
+    public Config(){}
 
     @Id
     @Setter
@@ -27,27 +28,14 @@ public class Appliance {
 
     @Setter
     @Getter
-    private String fnr;
-
-    @Setter
-    @Getter
-    private String status;
-
-    @ManyToOne
-    @Setter
-    @Getter
-    private Customer customer;
+    private String val;   
     
-    
-    public Appliance(
-            String aid, 
-            String fnr,
-            Customer cus) {
-    this.id = aid;
-    this.fnr = fnr;
-    this.status = "Disconnected";
-    this.customer = cus;
+    public Config(
+            String id, 
+            String val
+           ) {
+    this.id = id;
+    this.val = val;
+
   }
-    
-
 }

@@ -5,14 +5,16 @@
 package electro.assignment.repo;
 
 import electro.assignment.model.Appliance;
+import electro.assignment.model.Config;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author afdzal
  */
-public interface ApplianceRepository extends JpaRepository<Appliance, Long> {
-
-    public Appliance findById(String aid);
+public interface ConfigRepository extends JpaRepository< Config, Long> { 
+    Config findById(String id);
+    
+    
     
 }

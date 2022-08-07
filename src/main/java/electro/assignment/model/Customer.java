@@ -19,6 +19,8 @@ import lombok.Setter;
 @Table(name = "customers")
 @Data
 public class Customer {
+public Customer(){}    
+    
 @Id
 @Getter
 @GeneratedValue
