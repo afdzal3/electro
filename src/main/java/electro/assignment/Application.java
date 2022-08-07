@@ -1,11 +1,11 @@
 package electro.assignment;
 
 import electro.assignment.model.Appliance;
-import electro.assignment.model.Config;
 import electro.assignment.model.Customer;
 import electro.assignment.service.ApplianceService;
 import electro.assignment.service.CommonService;
 import electro.assignment.service.CustomerService;
+import electro.assignment.service.PingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,12 +23,16 @@ public class Application implements CommandLineRunner {
     @Autowired
     CommonService commonService;
 
+    @Autowired
+    private PingService ps;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 
     @Override
     public void run(String... params) throws Exception {
+        
 
         try {
             if (commonService.getPopConfig()) {
@@ -73,7 +77,7 @@ public class Application implements CommandLineRunner {
                 applianceService.create(ap5);
                 applianceService.create(ap6);
                 applianceService.create(ap7);
-                
+
                 commonService.popConfig();
                 /**
                  * *
@@ -101,12 +105,8 @@ public class Application implements CommandLineRunner {
                  *
                  *
                  */
-            }
-            else{
-           
-            
-            
-            
+            } else {
+
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

@@ -5,6 +5,7 @@
 package electro.assignment.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,6 +33,15 @@ public class Log {
     private Date timestamp;
     
     private String status;
+    
+     public Log(
+            Appliance aid, 
+            String status) {
+    Date date = new Date(System.currentTimeMillis());
+    this.aid = aid;   
+    this.status = status;
+    this.timestamp = date;
+     }
     
 
 
