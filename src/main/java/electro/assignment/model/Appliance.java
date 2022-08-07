@@ -5,11 +5,11 @@
 package electro.assignment.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -20,13 +20,33 @@ import lombok.Data;
 public class Appliance {
 
     @Id
+    @Setter
+    @Getter
     private String id;
 
+    @Setter
+    @Getter
     private String fnr;
 
+    @Setter
+    @Getter
     private String status;
 
     @ManyToOne
+    @Setter
+    @Getter
     private Customer customer;
+    
+    
+    public Appliance(
+            String aid, 
+            String fnr,
+            Customer cus) {
+    this.id = aid;
+    this.fnr = fnr;
+    this.status = "Disconnected";
+    this.customer = cus;
+  }
+    
 
 }

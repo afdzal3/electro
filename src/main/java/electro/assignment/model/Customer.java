@@ -7,6 +7,8 @@ package electro.assignment.model;
 
 import javax.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -15,9 +17,19 @@ import lombok.Data;
 
 @Entity
 @Table(name = "customers")
+@Data
 public class Customer {
 @Id
+@Getter
 @GeneratedValue
 private Long id;
+
+@Setter
+@Getter
+private String name;
+
+@Setter
+@Getter
+private String address;
     
 }
