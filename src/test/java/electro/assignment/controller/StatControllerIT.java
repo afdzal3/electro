@@ -37,7 +37,7 @@ public class StatControllerIT {
         Appliance appliance = new Appliance("43522", "fnr", customer);
         List<Appliance> appliances = new ArrayList<>();
         appliances.add(appliance);
-        appliances.add(appliance);
+       // appliances.add(appliance);
         when(applianceRepo.findAll()).thenReturn(appliances);
         mockMvc.perform(get("/api/status/list")).andExpect(status().isOk());
     }

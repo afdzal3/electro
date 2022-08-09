@@ -20,18 +20,20 @@ public class CommonServiceTest {
     @MockBean
     ConfigRepository configRepo;
 
+   
     @Autowired
     CommonService commonService;
 
     @Test
-    public void getPopConfigTest(){
-        ArrayList<Config> arrayList = new ArrayList<>();
-        Config config = new Config("pop", "value");
-        arrayList.add(config);
-        arrayList.add(config);
-        when(configRepo.findAll()).thenReturn(arrayList);
-        Boolean getPopConfig = commonService.getPopConfig();
-        Assertions.assertEquals(getPopConfig, true);
+    public Boolean getPopConfigTest(){
+        Config conf = configRepo.findById("pop");
+        if (conf == null) {
+            System.out.println("config need to be set");
+            return true;
+        } else {
+            System.out.println("config need not to be set");
+            return false;
+        }
     }
 
 }
