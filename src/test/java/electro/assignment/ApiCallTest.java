@@ -1,20 +1,24 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package electro.assignment;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootTest
-class AssignmentApplicationTests extends Application {
+/**
+ *
+ * @author afdzal
+ */
+public class ApiCallTest extends ApplicationTests {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -26,17 +30,11 @@ class AssignmentApplicationTests extends Application {
                 webAppContextSetup(webApplicationContext).build();
     }
 
-
     @Test
-    public void testAppliance() throws Exception {
+    public void applianceTest() throws Exception {
         mockMvc.perform(get("/api/status/list")).andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"));
 
     }
-    
-        /**
-     * @Test void contextLoads() { }
-*
-     */
 
 }

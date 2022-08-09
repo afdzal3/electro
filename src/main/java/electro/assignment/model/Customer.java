@@ -6,6 +6,7 @@ package electro.assignment.model;
 
 
 import javax.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "customers")
 @Data
+@AllArgsConstructor
 public class Customer {
 public Customer(){}    
     
