@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -23,26 +24,32 @@ import lombok.ToString;
 @Table(name = "logs")
 public class Log {
 
+    public Log() {
+    }
+
     @Id
     @GeneratedValue
     private Long id;
-    
+
     @ManyToOne
+    @Getter
     private Appliance aid;
-    
+
+    @Getter
     private Date timestamp;
-    
+
+    @Getter
     private String status;
     
-     public Log(
-            Appliance aid, 
-            String status) {
-    Date date = new Date(System.currentTimeMillis());
-    this.aid = aid;   
-    this.status = status;
-    this.timestamp = date;
-     }
-    
 
+
+    public Log(
+            Appliance aid,
+            String status) {
+        Date date = new Date(System.currentTimeMillis());
+        this.aid = aid;
+        this.status = status;
+        this.timestamp = date;
+    }
 
 }

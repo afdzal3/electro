@@ -40,6 +40,8 @@ public class StatControllerIT {
        // appliances.add(appliance);
         when(applianceRepo.findAll()).thenReturn(appliances);
         mockMvc.perform(get("/api/status/list")).andExpect(status().isOk());
+       
+      
     }
 
     @Test
