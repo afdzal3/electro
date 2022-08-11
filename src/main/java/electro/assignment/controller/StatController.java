@@ -9,6 +9,7 @@ import electro.assignment.model.Log;
 import electro.assignment.repo.ApplianceRepository;
 import electro.assignment.repo.LogRepository;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ public class StatController {
 
     public StatController(ApplianceRepository applianceRepo, LogRepository logRepo) {
         this.applianceRepo = applianceRepo;
-         this.logRepo = logRepo;
+        this.logRepo = logRepo;
 
     }
 
@@ -40,24 +41,35 @@ public class StatController {
         Appliance ap = applianceRepo.findById(aid);
         ap.setStatus(stat);
         applianceRepo.save(ap);
-        
-        Log log = new Log(ap,stat);
+
+        Log log = new Log(ap, stat);
         logRepo.save(log);
-        
+
         return applianceRepo.findById(aid);
-              
 
     }
-    
+
     @GetMapping("/list")
     public List<Appliance> getApps() {
-         
+
         List<Appliance> appList = applianceRepo.findAll();
-       
-      
-        
+
         return appList;
-              
+
+    }
+
+    @GetMapping("/listLog/{stat}")
+    public List<Log> getAppsStat(
+            @PathVariable("stat") String stat) {
+
+        List<Log> logList = logRepo.findAll();
+        List<Log> logList2 = logList.stream()
+                .filter(
+                        lines -> lines.getStatus()
+                                .equals(stat))
+                .collect(Collectors.toList());
+
+        return logList2;
 
     }
 
